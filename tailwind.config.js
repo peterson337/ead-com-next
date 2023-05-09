@@ -12,6 +12,16 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+       margin: {
+        '0': '0',
+      },
+      padding: {
+        '0': '0',
+      },
+      // Configuração padrão de box-sizing
+      boxSizing: {
+        'border-box': 'border-box',
+      },
     },
   },
   plugins: [],
