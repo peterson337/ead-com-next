@@ -23,6 +23,7 @@ import {BsFillArrowLeftCircleFill} from "react-icons/bs";
     slug: string;
     descricao: string;
     aberto?: boolean;
+    videoUrl: string;
   }
   
   const Aulas = () => {
@@ -32,7 +33,6 @@ import {BsFillArrowLeftCircleFill} from "react-icons/bs";
     const [open, setOpen] = useState(false);
     const [videoUrl, setVideoUrl] = useState<string>("");
 
-  
     useEffect(() => {
       const cursosCollection = collection(
         db,
@@ -46,6 +46,8 @@ import {BsFillArrowLeftCircleFill} from "react-icons/bs";
           snap: doc,
           docs: snap.docs,
           slug: doc.data().slug,
+          videoUrl: doc.data().videoUrl 
+
         }));
         setAulas(aulas);
       });
@@ -59,6 +61,13 @@ import {BsFillArrowLeftCircleFill} from "react-icons/bs";
       setOpen(false);
     }
 
+    const urlVideo = (videoUrl: string) => {
+      setVideoUrl(videoUrl);
+      setOpen(true);
+    };
+
+    console.log(videoUrl);
+
     return (
       <div>
         {open ? (
@@ -66,11 +75,10 @@ import {BsFillArrowLeftCircleFill} from "react-icons/bs";
             <button onClick={closeVideo} className='text-red-600 text-2xl absolute
             left-72
             top-72'><AiFillCloseCircle/></button>
-            <h1>{}</h1>
             <iframe
               width="560"
               height="315"
-              src="https://www.youtube.com/embed/m6rDKbl9Vus"
+              src={videoUrl}
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -82,8 +90,8 @@ import {BsFillArrowLeftCircleFill} from "react-icons/bs";
             {aulas.map((aula, index) => (
               <li key={index} className=' border-b border-gray-400 border-opacity-50'>
               <h1 className='text-2xl bg-[#0093ff] text-white p-5 pl-12 '>Aulas Disponíveis:</h1>
-                <p className='mt-2 ml-5'><b>Nome da aula:</b> {aula.id}</p> 
-                <button onClick={openVideo} className='bg-[#0388fc]  hover:bg-[#0362fc] text-white py-2 px-4 m-2 ml-5 rounded-full
+                <p className='mt-2 ml-5' ><b>Nome da aula:</b> {aula.id}</p> 
+                <button onClick={() => urlVideo(aula.videoUrl)} className='bg-[#0388fc]  hover:bg-[#0362fc] text-white py-2 px-4 m-2 ml-5 rounded-full
                 '>
                   Entrar na aula</button> 
                 <br />
