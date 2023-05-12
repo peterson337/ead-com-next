@@ -44,11 +44,14 @@ const Cursos = () => {
     <div className="container flex flex-col">
       {cursos?.map((val) => (
         <div key={val.id} className=' p-3   border-b border-gray-400 border-opacity-50'>
+
+        <span className=' text-black hover:no-underline  cursor-auto font-bold	ml-3'>Nome do curso:</span>
+
           <a
             onClick={() => handleEditUser()}
-            className='pl-3 text-[#0041ff] hover:text-[#f00] cursor-pointer hover:underline'>
-            <span className=' text-black hover:no-underline mr-3 cursor-auto font-bold	'>Nome do curso:</span>{val.id}
+            className='pl-3 text-[#0041ff] hover:text-[#f00] cursor-pointer hover:underline '>{val.id}
           </a>
+
 
           <p><span className=' text-black pl-3 mr-3 font-bold	'>Descrição do curso:</span>{val.descricao}</p>
         </div>

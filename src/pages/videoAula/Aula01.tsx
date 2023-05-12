@@ -5,6 +5,8 @@ import {collection, onSnapshot, getDocs,CollectionReference, QueryDocumentSnapsh
 import {useRouter} from "next/router";
 import { AiFillCloseCircle } from 'react-icons/ai';
 import {BsFillArrowLeftCircleFill} from "react-icons/bs";
+import ReactPlayer from 'react-player';
+
 
 
   interface Aula {
@@ -66,36 +68,36 @@ import {BsFillArrowLeftCircleFill} from "react-icons/bs";
       setOpen(true);
     };
 
-    console.log(videoUrl);
-
     return (
       <div>
         {open ? (
-          <div className='flex h-screen items-center ml-72'>
+          <div className='flex h-screen items-center  bg-black w-screen' onClick={closeVideo}>
             <button onClick={closeVideo} className='text-red-600 text-2xl absolute
-            left-72
+            left-0
             top-72'><AiFillCloseCircle/></button>
-            <iframe
-              width="560"
-              height="315"
-              src={videoUrl}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
+            <div className="relative  h-full aspect-w-16 aspect-h-9">
+            <ReactPlayer
+            url={videoUrl}
+            style={{ position: 'absolute', top: 200, left: 300 }}
+            playing={true}
+            controls={true}
+            volume={0.5}
+            />
+            </div>
+
+
           </div>
         ) : aulas.length > 0 ? (
           <ul>
             {aulas.map((aula, index) => (
               <li key={index} className=' border-b border-gray-400 border-opacity-50'>
-              <h1 className='text-2xl bg-[#0093ff] text-white p-5 pl-12 '>Aulas Disponíveis:</h1>
+              <h1 className='text-2xl bg-[#0093ff] text-white p-5 pl-20 '>Aulas Disponíveis:</h1>
                 <p className='mt-2 ml-5' ><b>Nome da aula:</b> {aula.id}</p> 
                 <button onClick={() => urlVideo(aula.videoUrl)} className='bg-[#0388fc]  hover:bg-[#0362fc] text-white py-2 px-4 m-2 ml-5 rounded-full
                 '>
                   Entrar na aula</button> 
                 <br />
-                <a onClick={() => back()} className='text-white cursor-pointer absolute top-5 left-2 text-4xl'>
+                <a onClick={() => back()} className='text-white cursor-pointer absolute top-5 left-5 text-4xl'>
                 <BsFillArrowLeftCircleFill /></a>
               </li>
             ))}

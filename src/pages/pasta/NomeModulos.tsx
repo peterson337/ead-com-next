@@ -43,18 +43,19 @@ const NomeModulos = (props : Props) => {
   
   return (
     <div>
-    <h1 className='text-2xl bg-[#0093ff] text-white p-5 pl-12 '>Modulos Disponíveis:</h1>
+    <h1 className='text-2xl bg-[#0093ff] text-white p-5 pl-20 '>Modulos Disponíveis:</h1>
 
       {modulos?.map((modulosData) => {
         return (
-          <div key={modulosData.id} className=' p-1   border-b border-gray-400 border-opacity-50'>
+          <div key={modulosData.id} className=' p-1 border-b border-gray-400 border-opacity-50'>
+          <span className=' text-black hover:no-underline ml-3 cursor-auto font-bold	'>Nome da aula:</span>
+
                  <a onClick={() => handleEditUser()}
                  className=' pl-3 text-[#0041ff] hover:text-[#f00] cursor-pointer hover:underline'>
-                 <span className=' text-black hover:no-underline mr-3 cursor-auto font-bold	'>Nome da aula:</span>
                  {modulosData.id}</a>
-                  <p className="pl-3">{modulosData.descricao}</p>
+                  <p className="pl-3"><span className=' text-black mr-3 font-bold	'>Descrição do curso:</span>{modulosData.descricao}</p>
             <a onClick={() => router.back()} 
-            className='text-white cursor-pointer absolute top-5 left-2 text-4xl'
+            className='text-white cursor-pointer absolute top-5 left-4 text-4xl'
            ><BsFillArrowLeftCircleFill /></a>
             {/* <p>Descrição: {modulosData.data().descricao}</p> */}
           </div>
