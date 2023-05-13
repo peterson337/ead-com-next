@@ -6,7 +6,7 @@ import {useRouter} from "next/router";
 import { AiFillCloseCircle } from 'react-icons/ai';
 import {BsFillArrowLeftCircleFill} from "react-icons/bs";
 import ReactPlayer from 'react-player';
-
+import styles from "@/styles/teste.module.css";
 
 
   interface Aula {
@@ -72,18 +72,20 @@ import ReactPlayer from 'react-player';
       <div>
         {open ? (
           <div className='flex h-screen items-center  bg-black w-screen' onClick={closeVideo}>
-            <button onClick={closeVideo} className='text-red-600 text-2xl absolute
-            left-0
-            top-72'><AiFillCloseCircle/></button>
-            <div className="relative  h-full aspect-w-16 aspect-h-9">
-            <ReactPlayer
-            url={videoUrl}
-            style={{ position: 'absolute', top: 200, left: 300 }}
-            playing={true}
-            controls={true}
-            volume={0.5}
-            />
-            </div>
+             <button onClick={closeVideo} className='text-white text-4xl absolute
+            left-5
+            top-5'><BsFillArrowLeftCircleFill/></button> 
+ <div className={styles.div}>
+  <ReactPlayer className={styles.player}
+    url={videoUrl}
+    style={{}}
+    playing={true}
+    controls={true}
+    volume={0.5}
+  />
+</div>
+
+
 
 
           </div>

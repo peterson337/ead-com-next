@@ -1,0 +1,14 @@
+.player{
+    position: absolute;
+    left: 300px;
+    bottom: 259px;
+}
+
+@media screen and (max-width:768px){
+    .player{
+        position: absolute;
+        left: 40px;
+        bottom: 209px;
+        max-width: 300px;
+    }
+}
