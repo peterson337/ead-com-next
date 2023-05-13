@@ -8,7 +8,7 @@
     .player{
         position: absolute;
         left: 40px;
-        top: 300px;
+        top: 100px;
         max-width: 300px;
     }
 }
