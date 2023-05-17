@@ -23,7 +23,7 @@ const Cursos = () => {
   }
 
   useEffect(() => {
-    const cursosCollection = collection(db, 'curso de inglês');
+    const cursosCollection = collection(db, 'cursos');
     const colecao = onSnapshot(cursosCollection, (snap) => {
       const cursos: Curso[] = snap.docs.map(doc => ({
         id: doc.id,

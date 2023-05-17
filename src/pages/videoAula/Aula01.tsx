@@ -36,24 +36,33 @@ import styles from "@/styles/teste.module.css";
     const [videoUrl, setVideoUrl] = useState<string>("");
 
     useEffect(() => {
-      const cursosCollection = collection(
-        db,
-        '/curso de inglês/curso de inglês/regras de gramática no inglês/regras de gramática no inglês/introdução as regras de gramática'
-      );
-      const colecao = onSnapshot(cursosCollection, (snap) => {
-        const aulas: Modulos[] = snap.docs.map((doc) => ({
-          id: doc.id,
-          nome: doc.data().nome,
-          descricao: doc.data().descricao,
-          snap: doc,
-          docs: snap.docs,
-          slug: doc.data().slug,
-          videoUrl: doc.data().videoUrl 
-
-        }));
-        setAulas(aulas);
-      });
+      const getAulasData = () => {
+        try {
+          const aulasCollection = collection(
+            db,
+            '/cursos/curso de ingles/modulos/verbo auxiliares/aulas/'
+          );
+          const unsubscribe = onSnapshot(aulasCollection, (snap) => {
+            const aulas: Modulos[] = snap.docs.map((doc) => ({
+              id: doc.id,
+              nome: doc.data().nome,
+              descricao: doc.data().descricao,
+              slug: doc.data().slug,
+              videoUrl: doc.data().videoUrl
+            }));
+            setAulas(aulas);
+          });
+    
+          // Retornar uma função de limpeza para cancelar a inscrição
+          return () => unsubscribe();
+        } catch (error) {
+          console.error("Erro ao obter dados das aulas:", error);
+        }
+      };
+    
+      getAulasData();
     }, []);
+    
   
     const openVideo = () => {
       setOpen(true);
