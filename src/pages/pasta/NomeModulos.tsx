@@ -20,7 +20,7 @@ const NomeModulos = (props : Props) => {
   const [modulos, setModulos] = useState<Modulos[]>([]);
   
   useEffect(() => {
-    const cursosCollection = collection(db, '/curso de inglês/curso de inglês/regras de gramática no inglês');
+    const cursosCollection = collection(db, '/curso de inglês/curso de inglês/regras de gramática no inglês/regras de gramática no inglês/introdução as regras de gramática');
     const colecao = onSnapshot(cursosCollection, (snap) => {
       const cursos: Modulos[] = snap.docs.map(doc => ({
         id: doc.id,

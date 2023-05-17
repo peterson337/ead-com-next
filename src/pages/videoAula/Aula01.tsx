@@ -70,8 +70,10 @@ import styles from "@/styles/teste.module.css";
 
     return (
       <div>
+
         {open ? (
           <div className='flex h-screen items-center  bg-black w-screen' onClick={closeVideo}>
+
              <button onClick={closeVideo} className='text-white text-4xl absolute
             left-5
             top-5'><BsFillArrowLeftCircleFill/></button> 
@@ -91,9 +93,10 @@ import styles from "@/styles/teste.module.css";
           </div>
         ) : aulas.length > 0 ? (
           <ul>
+          <h1 className='text-2xl bg-[#0093ff] text-white p-5 pl-20 '>Aulas Disponíveis:</h1>
+
             {aulas.map((aula, index) => (
               <li key={index} className=' border-b border-gray-400 border-opacity-50'>
-              <h1 className='text-2xl bg-[#0093ff] text-white p-5 pl-20 '>Aulas Disponíveis:</h1>
                 <p className='mt-2 ml-5' ><b>Nome da aula:</b> {aula.id}</p> 
                 <button onClick={() => urlVideo(aula.videoUrl)} className='bg-[#0388fc]  hover:bg-[#0362fc] text-white py-2 px-4 m-2 ml-5 rounded-full
                 '>
@@ -107,6 +110,7 @@ import styles from "@/styles/teste.module.css";
         ) : (
           <p>Carregando...</p>
         )}
+        
       </div>
     );
   };
